@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popup_settings"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_width="wrap_content"
+    android:layout_height="400dp"
     android:padding="16dp">
 
     <!-- Mute music button -->
@@ -12,9 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="65dp"
+        android:layout_marginEnd="65dp"
         android:background="@color/purple_700"
         android:text="@string/muteM"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/muteSoundEffectButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,11 +25,11 @@
         android:id="@+id/muteSoundEffectButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:layout_marginEnd="65dp"
         android:background="@color/purple_700"
         android:text="@string/muteS"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/muteMusicButton"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,6 @@ import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.SeekBar;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -31,10 +30,8 @@ public class FullscreenActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private static final String PREFERENCE_NAME = "anti-clicker";
     private final MediaPlayer menuMusic = new MediaPlayer();
-    public static int menuMusicPos = 0;
     public boolean musicIsMuted = false;
     public boolean sfxIsMuted = false;
-    public int musicProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +49,13 @@ public class FullscreenActivity extends AppCompatActivity {
         button2.setOnClickListener(view -> settingsBox());
         Button button3 = findViewById(R.id.quitButton);
         button3.setOnClickListener(view -> finishAffinity());
-        try {
-            AssetFileDescriptor afd = getAssets().openFd("anti_clicker_3.wav");
-            menuMusic.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            menuMusic.prepare();
-            menuMusic.setLooping(true);
-            menuMusic.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        loadMusic();
     }
 
     //starts the game by calling updateScore and changing activities to the game activity
     public void gameStart(View view) {
         updateScore();
-        Intent intent = new Intent(FullscreenActivity.this, GameActivity.class);
+        Intent intent = new Intent(FullscreenActivity.this, GameActivity2.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -94,27 +83,30 @@ public class FullscreenActivity extends AppCompatActivity {
         //enables button to mute music
         Button musicMuteButton = contentView.findViewById(R.id.muteMusicButton);
         musicMuteButton.setOnClickListener(view -> {
-            if (!musicIsMuted) {
-                menuMusic.stop();
-                musicIsMuted = true;
-                editor.putBoolean("musicIsMuted", true);
-            } else {
-                menuMusic.start();
-                musicIsMuted = false;
-                editor.putBoolean("musicIsMuted", false);
-            } editor.apply();
+            if (!musicIsMuted) { menuMusic.setVolume(0, 0); }
+            else { menuMusic.setVolume(100, 100); }
         });
 
         //enables button to mute sound effects
         Button sfxButton = contentView.findViewById(R.id.muteSoundEffectButton);
         sfxButton.setOnClickListener(view -> {
-            if (!sfxIsMuted) {
-                editor.putBoolean("sfxIsMuted", true);
-                sfxIsMuted=true;
-            } else {
-                editor.putBoolean("sfxIsMuted", false);
-            } editor.apply();
+            if (!sfxIsMuted) { sfxIsMuted=true;}
+            else { sfxIsMuted=false; }
+            editor.putBoolean("sfxIsMuted", sfxIsMuted);
+            editor.apply();
         });
+    }
+
+    private void loadMusic() {
+        try {
+            AssetFileDescriptor afd = getAssets().openFd("anti_clicker_menu.mp3");
+            menuMusic.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            menuMusic.prepare();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        menuMusic.setLooping(true);
+        menuMusic.start();
     }
 
     //increments the score based on time when in menu
@@ -131,26 +123,23 @@ public class FullscreenActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        if(menuMusic == null) {
-            if(!musicIsMuted) {
-                float vol = musicProgress / 100f;
-                menuMusic.setVolume(vol, vol);
-                menuMusic.start();
-            }
-            else {
-                menuMusic.setVolume(0, 0);
-            }
-        }
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        menuMusicPos = menuMusic.getCurrentPosition();
-        editor.putBoolean("musicIsMuted", musicIsMuted);
-        editor.apply();
-        menuMusic.stop();
-        menuMusic.release();
+        if(menuMusic.isPlaying()) {
+           menuMusic.stop();
+        }
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(menuMusic.isPlaying()){
+            menuMusic.stop();
+            menuMusic.release();
+        }
     }
 
     //hides the system's action bar and creates a fullscreen activity (called by onCreate())

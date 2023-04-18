@@ -63,18 +63,32 @@ public class FullscreenActivity extends AppCompatActivity {
     //shows settings box, and sets buttons and sliders
     @SuppressLint("ClickableViewAccessibility")
     private void settingsBox() {
-        //opens settings box
+        //opens settings box and disables main menu buttons
+        Button button = findViewById(R.id.playButton);
+        Button button2 = findViewById(R.id.settingsButton);
+        Button button3 = findViewById(R.id.quitButton);
+        button.setClickable(false);
+        button2.setClickable(false);
+        button3.setClickable(false);
         PopupWindow popupWindow = new PopupWindow(this);
         View contentView = getLayoutInflater().inflate(R.layout.popup_settings, null);
         popupWindow.setContentView(contentView);
         popupWindow.showAtLocation(contentView, Gravity.CENTER, 0, 0);
+        ConstraintLayout mainMenu = findViewById(R.id.mainMenu);
 
-        //allows settings box to be closed via touch outside the box
+
+        //allows settings box to be closed via touch outside the box and re-enables main menu buttons
         popupWindow.setOnDismissListener(popupWindow::dismiss);
-        ConstraintLayout mainMenu = findViewById(R.id.mainScreen);
         mainMenu.setOnTouchListener((v, event) -> {
             if (popupWindow.isShowing()) {
                 // Closes the settings box
+                editor.putBoolean("musicIsMuted", musicIsMuted);
+                editor.apply();
+                editor.putBoolean("sfxIsMuted", sfxIsMuted);
+                editor.apply();
+                button.setClickable(true);
+                button2.setClickable(true);
+                button3.setClickable(true);
                 popupWindow.dismiss();
             }
             return false;
@@ -83,17 +97,25 @@ public class FullscreenActivity extends AppCompatActivity {
         //enables button to mute music
         Button musicMuteButton = contentView.findViewById(R.id.muteMusicButton);
         musicMuteButton.setOnClickListener(view -> {
-            if (!musicIsMuted) { menuMusic.setVolume(0, 0); }
-            else { menuMusic.setVolume(100, 100); }
+            if (!musicIsMuted) {
+                musicIsMuted = true;
+                menuMusic.pause();
+            }
+            else {
+                musicIsMuted = false;
+                menuMusic.start();
+            }
         });
 
         //enables button to mute sound effects
         Button sfxButton = contentView.findViewById(R.id.muteSoundEffectButton);
         sfxButton.setOnClickListener(view -> {
-            if (!sfxIsMuted) { sfxIsMuted=true;}
-            else { sfxIsMuted=false; }
-            editor.putBoolean("sfxIsMuted", sfxIsMuted);
-            editor.apply();
+            if (!sfxIsMuted) {
+                sfxIsMuted=true;
+            }
+            else {
+                sfxIsMuted=false;
+            }
         });
     }
 
@@ -123,6 +145,10 @@ public class FullscreenActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        musicIsMuted = prefs.getBoolean("musicIsMuted", musicIsMuted);
+        if(musicIsMuted){
+            menuMusic.pause();
+        } else { menuMusic.start(); }
     }
 
     @Override

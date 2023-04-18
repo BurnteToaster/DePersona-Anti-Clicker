@@ -24,8 +24,8 @@ public class UpgradesDatabase extends SQLiteOpenHelper {
                 + "power INTEGER,"
                 + "price INTEGER,"
                 + "count INTEGER,"
-                + "powerFunction TEXT,"
-                + "priceFunction TEXT)";
+                + "powerCoefficient FLOAT,"
+                + "priceCoefficient FLOAT)";
         db.execSQL(createTable);
     }
 
@@ -42,8 +42,8 @@ public class UpgradesDatabase extends SQLiteOpenHelper {
         values.put("power", upgrade.getPower());
         values.put("price", upgrade.getPrice());
         values.put("count", upgrade.getCount());
-        values.put("powerFunction", upgrade.getPowerFunction());
-        values.put("priceFunction", upgrade.getPriceFunction());
+        values.put("powerCoefficient", upgrade.getPowerCoefficient());
+        values.put("priceCoefficient", upgrade.getPriceCoefficient());
 
         db.insert("upgrades", null, values);
         db.close();
@@ -52,7 +52,7 @@ public class UpgradesDatabase extends SQLiteOpenHelper {
     public List<Upgrade> getAllUpgrades() {
         SQLiteDatabase db = getReadableDatabase();
 
-        String[] columns = {"id", "power", "price", "count", "powerFunction", "priceFunction"};
+        String[] columns = {"id", "power", "price", "count", "powerCoefficient", "priceCoefficient"};
 
         Cursor cursor = db.query("upgrades", columns, null, null, null, null, null);
 
@@ -63,8 +63,8 @@ public class UpgradesDatabase extends SQLiteOpenHelper {
             upgrade.setPower(cursor.getInt(2));
             upgrade.setPrice(cursor.getInt(3));
             upgrade.setCount(cursor.getInt(4));
-            upgrade.setPowerFunction(cursor.getString(5));
-            upgrade.setPriceFunction(cursor.getString(6));
+            upgrade.setPowerFunction(cursor.getFloat(5));
+            upgrade.setPriceFunction(cursor.getFloat(6));
             upgrades.add(upgrade);
         }
         cursor.close();
@@ -80,8 +80,8 @@ public class UpgradesDatabase extends SQLiteOpenHelper {
         values.put("power", upgrade.getPower());
         values.put("price", upgrade.getPrice());
         values.put("count", upgrade.getCount());
-        values.put("powerFunction", upgrade.getPowerFunction());
-        values.put("priceFunction", upgrade.getPriceFunction());
+        values.put("powerCoefficient", upgrade.getPowerCoefficient());
+        values.put("priceCoefficient", upgrade.getPriceCoefficient());
 
         db.update("upgrades", values, "id = ?", new String[] { String.valueOf(upgrade.getID()) });
         db.close();

@@ -5,16 +5,16 @@ public class Upgrade {
     private int power;
     private int price;
     private int count;
-    private String powerFunction;
-    private String priceFunction;
+    private float powerCoefficient;
+    private float priceCoefficient;
 
-    public Upgrade(int id, int power, int price, int count, String powerFunction, String priceFunction) {
+    public Upgrade(int id, int power, int price, int count, float powerCoefficient, float priceCoefficient) {
         this.id = id;
         this.power = power;
         this.price = price;
         this.count = count;
-        this.powerFunction = powerFunction;
-        this.priceFunction = priceFunction;
+        this.powerCoefficient = powerCoefficient;
+        this.priceCoefficient = priceCoefficient;
     }
 
     public Upgrade() {
@@ -37,12 +37,12 @@ public class Upgrade {
         return count;
     }
 
-    public String getPowerFunction() {
-        return powerFunction;
+    public float getPowerCoefficient() {
+        return powerCoefficient;
     }
 
-    public String getPriceFunction() {
-        return priceFunction;
+    public float getPriceCoefficient() {
+        return priceCoefficient;
     }
 
     public void setID(int ID) {
@@ -54,12 +54,12 @@ public class Upgrade {
     public void setPrice(int price) {
     }
 
-    public void setPowerFunction(String powerFunction) {
-    }
-
-    public void setPriceFunction(String priceFunction) {
-    }
-
     public void setCount(int count) {
+    }
+
+    public void setPowerFunction(float powerFunction) {
+    }
+
+    public void setPriceFunction(float priceFunction) {
     }
 }

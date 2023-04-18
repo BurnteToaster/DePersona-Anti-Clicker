@@ -5,7 +5,9 @@
     <string name="settings">SETTINGS</string>
     <string name="quit">QUIT</string>
     <string name="logo">Anti-Clicker Logo</string>
+    <string name="upgrade0">Upgrade 0</string>
     <string name="upgrade1">Upgrade 1</string>
+    <string name="upgrade2">Upgrade 2</string>
     <string name="buy">BUY</string>
     <string name="bottom_bar_desc">The bottom bar of the game used to open the upgrades menu</string>
     <string name="muteM">Mute Music</string>

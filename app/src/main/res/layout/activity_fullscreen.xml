@@ -58,11 +58,49 @@
                 android:id="@+id/upgrade0Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:text="@string/upgrade0"
+                android:text="@string/upgrade"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@id/upgradesListB"
+                app:layout_constraintTop_toTopOf="@id/upgradesListB"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/power0Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:textSize="16sp"
+                android:text="@string/power"
+                app:layout_constraintStart_toEndOf="@id/upgrade0Text"
+                app:layout_constraintTop_toTopOf="@id/upgradesListB"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/price0Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:text="@string/price"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/power0Text"
+                app:layout_constraintTop_toTopOf="@id/upgradesListB"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/count0Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/count"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/buyButton0"
+                app:layout_constraintStart_toEndOf="@id/price0Text"
                 app:layout_constraintTop_toTopOf="@id/upgradesListB"
                 tools:ignore="VisualLintBounds" />
 
@@ -72,9 +110,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:padding="8dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/buy"
+                android:tag="upgrade0"
+                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="@id/upgradesListB"
                 app:layout_constraintTop_toTopOf="@id/upgradesListB"
                 tools:ignore="VisualLintBounds" />
@@ -83,12 +122,50 @@
                 android:id="@+id/upgrade1Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="64dp"
-                android:text="@string/upgrade1"
+                android:text="@string/upgrade"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@id/upgradesListB"
                 app:layout_constraintTop_toBottomOf="@id/upgrade0Text"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/power1Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="84dp"
+                android:textSize="16sp"
+                android:text="@string/power"
+                app:layout_constraintStart_toEndOf="@id/upgrade1Text"
+                app:layout_constraintTop_toTopOf="@id/power0Text"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/price1Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="84dp"
+                android:text="@string/price"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/power1Text"
+                app:layout_constraintTop_toTopOf="@id/price0Text"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/count1Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="84dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/count"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/buyButton1"
+                app:layout_constraintStart_toEndOf="@id/price1Text"
+                app:layout_constraintTop_toTopOf="@id/count0Text"
                 tools:ignore="VisualLintBounds" />
 
             <Button
@@ -97,9 +174,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:padding="8dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/buy"
+                android:tag="upgrade1"
+                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="@id/upgradesListB"
                 app:layout_constraintTop_toBottomOf="@id/buyButton0"
                 tools:ignore="VisualLintBounds" />
@@ -108,12 +186,50 @@
                 android:id="@+id/upgrade2Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="64dp"
-                android:text="@string/upgrade2"
+                android:text="@string/upgrade"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@id/upgradesListB"
                 app:layout_constraintTop_toBottomOf="@id/upgrade1Text"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/power2Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="84dp"
+                android:textSize="16sp"
+                android:text="@string/power"
+                app:layout_constraintStart_toEndOf="@id/upgrade2Text"
+                app:layout_constraintTop_toTopOf="@id/power1Text"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/price2Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="84dp"
+                android:text="@string/price"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/power2Text"
+                app:layout_constraintTop_toTopOf="@id/price1Text"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/count2Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="84dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/count"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/buyButton2"
+                app:layout_constraintStart_toEndOf="@id/price2Text"
+                app:layout_constraintTop_toTopOf="@id/count1Text"
                 tools:ignore="VisualLintBounds" />
 
             <Button
@@ -122,9 +238,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:padding="8dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/buy"
+                android:tag="upgrade2"
+                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="@id/upgradesListB"
                 app:layout_constraintTop_toBottomOf="@id/buyButton1"
                 tools:ignore="VisualLintBounds" />

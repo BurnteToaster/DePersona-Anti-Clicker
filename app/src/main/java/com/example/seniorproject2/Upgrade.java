@@ -46,20 +46,26 @@ public class Upgrade {
     }
 
     public void setID(int ID) {
+        id = ID;
     }
 
-    public void setPower(int power) {
+    public void setPower(int pwr) {
+        power = pwr;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(int prc) {
+        price = prc;
     }
 
-    public void setCount(int count) {
+    public void setCount(int cnt) {
+        count = cnt;
     }
 
-    public void setPowerFunction(float powerFunction) {
+    public void setPowerCoefficient(float pwrC) {
+        powerCoefficient = pwrC;
     }
 
-    public void setPriceFunction(float priceFunction) {
+    public void setPriceCoefficient(float pcrC) {
+        priceCoefficient = pcrC;
     }
 }

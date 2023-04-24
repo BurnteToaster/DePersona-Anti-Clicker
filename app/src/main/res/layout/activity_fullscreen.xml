@@ -99,7 +99,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="@string/count"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/buyButton0"
+                app:layout_constraintEnd_toStartOf="@id/buyButton0"
                 app:layout_constraintStart_toEndOf="@id/price0Text"
                 app:layout_constraintTop_toTopOf="@id/upgradesListB"
                 tools:ignore="VisualLintBounds" />
@@ -112,7 +112,6 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/buy"
-                android:tag="upgrade0"
                 android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="@id/upgradesListB"
                 app:layout_constraintTop_toTopOf="@id/upgradesListB"
@@ -163,7 +162,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="@string/count"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/buyButton1"
+                app:layout_constraintEnd_toStartOf="@id/buyButton1"
                 app:layout_constraintStart_toEndOf="@id/price1Text"
                 app:layout_constraintTop_toTopOf="@id/count0Text"
                 tools:ignore="VisualLintBounds" />
@@ -176,7 +175,6 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/buy"
-                android:tag="upgrade1"
                 android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="@id/upgradesListB"
                 app:layout_constraintTop_toBottomOf="@id/buyButton0"
@@ -227,7 +225,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="@string/count"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/buyButton2"
+                app:layout_constraintEnd_toStartOf="@id/buyButton2"
                 app:layout_constraintStart_toEndOf="@id/price2Text"
                 app:layout_constraintTop_toTopOf="@id/count1Text"
                 tools:ignore="VisualLintBounds" />
@@ -240,7 +238,6 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/buy"
-                android:tag="upgrade2"
                 android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="@id/upgradesListB"
                 app:layout_constraintTop_toBottomOf="@id/buyButton1"
@@ -272,6 +269,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/auto_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/autoScore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/body" />
+
     <ImageView
         android:id="@+id/soul"
         android:layout_width="wrap_content"
@@ -281,5 +288,15 @@
         android:src="@drawable/soul_64x64"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dec_auto_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/decAutoScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/soul" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.example.seniorproject2;
 
+import android.view.View;
+
 public class Upgrade {
     private int id;
     private int power;

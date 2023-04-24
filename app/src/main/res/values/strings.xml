@@ -9,6 +9,8 @@
     <string name="power">Power: </string>
     <string name="price">Price: </string>
     <string name="count">Count: </string>
+    <string name="autoScore">Inc: </string>
+    <string name="decAutoScore">Dec: </string>
     <string name="buy">BUY</string>
     <string name="bottom_bar_desc">The bottom bar of the game used to open the upgrades menu</string>
     <string name="muteM">Mute Music</string>

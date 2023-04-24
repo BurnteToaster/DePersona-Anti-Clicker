@@ -137,7 +137,7 @@ public class FullscreenActivity extends AppCompatActivity {
         long lastPlayedTime = prefs.getLong("last_played_time", System.currentTimeMillis());
         long currentTime = System.currentTimeMillis();
         long timeDifference = currentTime - lastPlayedTime;
-        score += timeDifference / 1000L;
+        editor.putLong("timeDifference", timeDifference / 1000L);
         editor.putLong("score", score);
         editor.apply();
     }

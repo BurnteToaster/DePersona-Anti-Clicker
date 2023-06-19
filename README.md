@@ -38,3 +38,6 @@ Works in Progress (04/29/2023):
 - Adjusting numbers and changing functions for proper game balance
   + Plan to use logarithmic functions for initial high power with a falloff later per upgrade
 - Changing logo to fit current title (I had made the logo first based on the idea then ended up with a title for the game)
+
+(06/19/2023)
+- I want to move this game to Unity so this project will be on pause for a bit, and the repo will be updated accordingly soon.
